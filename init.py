@@ -26,9 +26,8 @@ url = ('https://graph.facebook.com/me/friends?access_token='+token)
 try:
 	resp = urllib.request.urlopen(url).read()
 	data = json.loads(resp.decode('utf-8'))
+	for friend in data['data']:
+  		image_download(friend)
 except:
 	print("Facebook APIs have been updated with time, and this Repo needs Rewamp! Keep Contributing!")
 
-for friend in data['data']:
-  image_download(friend)
-print("\n\nThank you for using my Auto Image Downloader")
