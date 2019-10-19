@@ -23,8 +23,11 @@ print("please Enter your Token : ",end='')
 token = input()
 #get the token https://developers.facebook.com/tools/explorer
 url = ('https://graph.facebook.com/me/friends?access_token='+token)
-resp = urllib.request.urlopen(url).read()
-data = json.loads(resp.decode('utf-8'))
+try:
+	resp = urllib.request.urlopen(url).read()
+	data = json.loads(resp.decode('utf-8'))
+except:
+	print("Facebook APIs have been updated with time, and this Repo needs Rewamp! Keep Contributing!")
 
 for friend in data['data']:
   image_download(friend)
