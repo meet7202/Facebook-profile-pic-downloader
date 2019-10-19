@@ -8,11 +8,15 @@ import json
 def image_download(friend):
 	size = '/picture?width=250&height=250'
 	url = 'https://graph.facebook.com/'+ friend['id'] + size
-	image = urllib.request.urlopen(url).read()
-	f = open(friend['name'] + '.jpg', 'wb')
-	f.write(image)
-	f.close()
-	print (friend['name'] + '.jpg Downloaded')
+	try:
+		image = urllib.request.urlopen(url).read()
+		f = open(friend['name'] + '.jpg', 'wb')
+		f.write(image)
+		f.close()
+		print (friend['name'] + '.jpg Downloaded')
+	except:
+		print("Facebook APIs have been updated with time, and this Repo needs Rewamp! Keep Contributing!")
+
 print("Hi...!!  Welcome to Facebook Auto Image Downloader by Meet Shah")
 print("please generate your token\n from https://developers.facebook.com/tools/explorer with user_friends option marked and enter that token here...!!")
 print("please Enter your Token : ",end='')
